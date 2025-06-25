@@ -11,7 +11,7 @@ class EventBookingRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,9 @@ class EventBookingRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
-        ];
+        'Name' => 'required|max:255',
+        'location' => 'required|string',
+        'date' => 'required|date',
+    ];
     }
 }
