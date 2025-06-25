@@ -16,6 +16,11 @@ return Application::configure(basePath: dirname(__DIR__))
             ->prefix('api')
             ->group(base_path('routes/api.php'));
 
+            // Addig custom auth route for login here
+            Route::middleware('api')
+                ->prefix('auth')
+                ->group(base_path('routes/auth.php'));
+
             Route::middleware('api')
             ->prefix('test')
             ->group(base_path('routes/test.php'));
