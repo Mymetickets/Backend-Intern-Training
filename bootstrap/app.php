@@ -17,6 +17,11 @@ return Application::configure(basePath: dirname(__DIR__))
             ->group(base_path('routes/api.php'));
 
             Route::middleware('api')
+            ->prefix('api')
+            ->group(base_path('routes/eventbooking.php'));
+
+
+            Route::middleware('api')
             ->prefix('test')
             ->group(base_path('routes/test.php'));
         }
