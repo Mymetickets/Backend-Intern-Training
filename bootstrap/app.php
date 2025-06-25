@@ -34,11 +34,15 @@ return Application::configure(basePath: dirname(__DIR__))
             Route::middleware("api")
             ->prefix("payments")
             ->group(base_path("routes/payments.php"));
+
+            Route::middleware("api")
+            ->prefix("ticket")
+            ->group(base_path("routes/ticket.php"));
         }
     )
     ->withMiddleware(function (Middleware $middleware): void {
         //
     })
     ->withExceptions(function (Exceptions $exceptions) {
-        
+
     })->create();
