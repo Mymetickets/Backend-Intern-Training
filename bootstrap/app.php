@@ -3,6 +3,7 @@
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
+use Mockery\Exception\InvalidOrderException;
 
 return Application::configure(basePath: dirname(__DIR__))
     ->withRouting(
@@ -22,6 +23,11 @@ return Application::configure(basePath: dirname(__DIR__))
                 ->group(base_path('routes/auth.php'));
 
             Route::middleware('api')
+            ->prefix('api')
+            ->group(base_path('routes/eventbooking.php'));
+
+
+            Route::middleware('api')
             ->prefix('test')
             ->group(base_path('routes/test.php'));
 
@@ -33,7 +39,6 @@ return Application::configure(basePath: dirname(__DIR__))
     ->withMiddleware(function (Middleware $middleware): void {
         //
     })
-    ->withExceptions(function (Exceptions $exceptions): void {
-        //
-        // $exceptions->render()
+    ->withExceptions(function (Exceptions $exceptions) {
+        
     })->create();
