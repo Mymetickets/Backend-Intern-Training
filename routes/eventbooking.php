@@ -6,6 +6,4 @@ Route::get('/event', function (Request $request) {
     return $request->user();
 })->middleware('auth:sanctum');
 
-Route::get('/event/booking', [EventBookingController::class, 'index'])
-
-    ->middleware('auth:api');
+Route::get('/event/booking', [EventBookingController::class, 'index'])->middleware('auth:api');
