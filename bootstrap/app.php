@@ -19,6 +19,10 @@ return Application::configure(basePath: dirname(__DIR__))
             Route::middleware('api')
             ->prefix('test')
             ->group(base_path('routes/test.php'));
+
+            Route::middleware("api")
+            ->prefix("payments")
+            ->group(base_path("routes/payments.php"));
         }
     )
     ->withMiddleware(function (Middleware $middleware): void {
@@ -26,4 +30,5 @@ return Application::configure(basePath: dirname(__DIR__))
     })
     ->withExceptions(function (Exceptions $exceptions): void {
         //
+        // $exceptions->render()
     })->create();
