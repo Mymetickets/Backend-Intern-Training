@@ -1,26 +1,20 @@
 <?php
 
-namespace App\Repositories;
+namespace App\Services;
+use App\Repositories\EventBookingRepository;
+use App\Services\BaseService;
 
-use App\Models\EventBooking;
-
-class EventBookingRepository{
-    public function getAllBookings(){
-        $data = EventBooking::all();
-        return $data;
+class EventBookingService extends BaseService {
+    public $Event_booking;
+    public function __construct() {
+        parent::__construct();
+        $this->Event_booking = new EventBookingRepository;
     }
 
-    public function getSingleBooking($id){
-        $data = EventBooking::find($id);
-        return $data;
-    }
-
-    public function createBooking($reqData){
-        $data = EventBooking::create($reqData);
+    public function create_event($reqData){
+        $data = $this->Event_booking->createBooking($reqData);
         return $data;
     }
 }
-
-
 
 ?>
