@@ -21,8 +21,11 @@ class TicketRequest extends FormRequest
      */
     public function rules(): array
     {
-        return [
-            //
+         return [
+            'ticket_name' => 'required|string',
+            'ticket_type' => 'nullable|string|max:233',
+            'amount' => 'required|numeric',
+            'status' => 'required|string|in:active,inactive,pending', // You can modify values as needed
         ];
     }
 }
