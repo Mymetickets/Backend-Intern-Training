@@ -11,8 +11,7 @@ class EventBooking extends Model
     protected $fillable = [
         'Name',
         'location',
-        'date',
-        
+        'date'
     ];
 
 
