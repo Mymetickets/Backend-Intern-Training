@@ -2,6 +2,7 @@
 
 namespace App\Services;
 use App\Repositories\EventBookingRepository;
+use App\Http\Resources\EventBookingResource;
 use App\Services\BaseService;
 
 class EventBookingService extends BaseService {
@@ -11,9 +12,9 @@ class EventBookingService extends BaseService {
         $this->Event_booking = new EventBookingRepository;
     }
 
-    public function create_event($reqData){
+    public function createEvent($reqData){
         $data = $this->Event_booking->createBooking($reqData);
-        return $data;
+        return new EventBookingResource($data);
     }
 }
 
