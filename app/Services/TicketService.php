@@ -2,6 +2,8 @@
 
 namespace App\Services;
 
+use App\DTOs\TicketDTO;
+use App\Http\Resources\TicketResource;
 use App\Repositories\TicketRepository;
 
 class TicketService extends BaseService
@@ -28,6 +30,8 @@ class TicketService extends BaseService
     public function getSingleTicKet($id)
     {
         $resp = $this->ticketRepo->getSingleTicket($id);
+        $resp = new TicketResource($resp);
+        //$resp = new TicketDTO($resp->ticket_name, $resp->ticket_type, $resp->amount, $resp->status);
         return $resp;
     }
 

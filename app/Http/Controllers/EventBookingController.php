@@ -21,7 +21,6 @@ class EventBookingController extends Controller
         $data = $this->eventBookingService->create_event($request);
         return response()->json([
             'message' => 'Event Created successfully',
-
         ]);
     }
 }

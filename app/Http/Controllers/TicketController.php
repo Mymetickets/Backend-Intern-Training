@@ -53,8 +53,10 @@ class TicketController extends Controller
             ], 404);
         }
         return response()->json([
+            "status" => "00",
             'message' => 'Ticket Found Successfully',
-            'data' => $data
+            'data' => $data,
+            "errors" => []
         ], 201);
     }
     function update(TicketRequest $request, $id)
@@ -62,18 +64,15 @@ class TicketController extends Controller
         $data = $this->ticketService->updateTicket($request->validated(),$id);
         if (!$data) {
             return response()->json([
+                "status" => false,
                 'message' => 'Ticket not found'
-            ],404);
+            ],200);
         }
-
-        return response()->json([
-            'message'=>'Ticket Updated successfully',
-            'data'=> $data
-        ],200);
+        return apiResponse("Ticket updated", $data, 200);
     }
 
     function delete($id){
-        $data=$this->ticketService->deleteTicket($id);
+        $data = $this->ticketService->deleteTicket($id);
         if($data != true){
             return response()->json([
                 'message'=>'Ticket delete Failed'

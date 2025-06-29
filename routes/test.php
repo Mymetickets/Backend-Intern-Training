@@ -1,4 +1,5 @@
 <?php 
-Route::get("", function(){
+
+Route::get("/we", function(){
     return "Hello test";
 });
